@@ -29,6 +29,8 @@ let LinkedList = function(initialValue) {
 	} else {
 		this.head = Node(null);
 	}
+
+	this.N = 0;
 };
 
 LinkedList.prototype.push = function(value) {
@@ -42,13 +44,20 @@ LinkedList.prototype.push = function(value) {
 	// assign oldhead to next
 	this.head.next = oldhead;
 
+	// increment the size of the stack
+	this.N += 1;
+
 };
 
 LinkedList.prototype.pop = function() {
 
 	let item = this.head.value;
 
+	// move the head pointer to next
 	this.head = this.head.next;
+
+	// decrement the size of the stack
+	this.N -= 1;
 
 	return item;
 
@@ -56,9 +65,14 @@ LinkedList.prototype.pop = function() {
 
 LinkedList.prototype.isEmpty = function() {
 
-
+	return this.head.value === null;
 
 };
+
+LinkedList.prototype.size = function() {
+
+	return this.N;
+}
 
 
 
@@ -74,6 +88,7 @@ let strToArr = string.split(" ");
 // Create a stack with linked list implementation
 let stack = new LinkedList();
 
+
 // Loop through string array and test stack functionality
 while( strToArr.length > 0 ) {
 
@@ -82,6 +97,7 @@ while( strToArr.length > 0 ) {
 	if (strToArr[0] === '-') {
 		let output = stack.pop();
 		console.log('output =', output);
+		console.log('size = ', stack.size());
 	}
 
 	// otherwise, push string[0] onto stack
