@@ -1,3 +1,4 @@
+// Joseph Stowers
 // Stack with Linked List Implementation
 // January 8, 2017
 
