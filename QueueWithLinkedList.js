@@ -8,7 +8,7 @@
 
 	1.	Create an empty queue
 
-	2.	enqueue(value) => insert a new item at the end of the queue
+	2.	enqueue(value) => insert a new item at the tail of the queue
 
 	3.	dequeue() => remove and return the item at the head of the queue
 
@@ -33,7 +33,7 @@ let LinkedList = function(initialValue) {
 		this.N = 1;
 	} else {
 		this.head = Node(null);
-		this.tail = Node(null);
+		this.tail = this.head;
 		this.N = 0;
 	}
 
@@ -47,11 +47,17 @@ LinkedList.prototype.enqueue = function(value) {
 	// create a new tail with the current value
 	this.tail = new Node(value);
 
-	// assign oldtail to next
-	this.tail.next = oldtail;
+	// if queue is empty, set head equal to tail
+	if (this.isEmpty()){
+		this.head = this.tail;
+	} else {
+		oldtail.next = this.tail;
+	}
 
 	// increment the size of the queue
 	this.N += 1;
+
+	console.log('this after enqueue ', this)
 
 };
 
@@ -59,11 +65,22 @@ LinkedList.prototype.dequeue = function() {
 
 	let item = this.head.value;
 
+	// if head and tail values are equal, then
+	// dequeuing the last node in the list.
+	// therefore, reset head and tail values to null
+	if(this.head.value === this.tail.value){
+		this.head.value = null;
+		this.tail.value = null;
+	}
 	// move the head pointer to next
-	this.head = this.head.next;
+	else {
+		this.head = this.head.next;
+	}
 
-	// decrement the size of the stack
+	// decrement the size of the queue
 	this.N -= 1;
+
+	console.log('this after dequeue ', this)
 
 	return item;
 
@@ -71,7 +88,7 @@ LinkedList.prototype.dequeue = function() {
 
 LinkedList.prototype.isEmpty = function() {
 
-	return this.head.value === null;
+	return this.head.value === null && this.head.next === null;
 
 };
 
@@ -97,14 +114,13 @@ let queue = new LinkedList();
 // Loop through string array and test stack functionality
 while( strToArr.length > 0 ) {
 
-	// if strToArr[0] = '-', pop string from stack and output
+	// if strToArr[0] = '-', dequeue string from queue and output
 	if (strToArr[0] === '-') {
-		let output = queue.dequeue();
-		console.log('output =', output);
-		console.log('size = ', queue.size());
+		queue.dequeue();
+		//console.log('output =', output);
 	}
 
-	// otherwise, push strToArr[0] onto end of queue
+	// otherwise, enqueue strToArr[0] onto tail of queue
 	else {
 		queue.enqueue(strToArr[0]);
 	}
