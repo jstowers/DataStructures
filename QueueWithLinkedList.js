@@ -1,10 +1,13 @@
 // Joseph Stowers
 // Queue with Linked List Implementation
-// January 9, 2017
+// January 10, 2017
 
 //  Queue API
 /*
 	FIFO = First In, First Out
+
+	head = pointer to the first item added to the queue
+	tail = pointer to the last item added to the queue
 
 	1.	Create an empty queue
 
@@ -111,16 +114,15 @@ let strToArr = string.split(" ");
 // Create a queue with linked list implementation
 let queue = new LinkedList();
 
-// Loop through string array and test stack functionality
+// Loop through string array and test queue functionality
 while( strToArr.length > 0 ) {
 
-	// if strToArr[0] = '-', dequeue string from queue and output
+	// if string = '-', dequeue string from queue and output
 	if (strToArr[0] === '-') {
 		queue.dequeue();
-		//console.log('output =', output);
 	}
 
-	// otherwise, enqueue strToArr[0] onto tail of queue
+	// enqueue string onto tail of queue
 	else {
 		queue.enqueue(strToArr[0]);
 	}
