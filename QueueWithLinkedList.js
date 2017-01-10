@@ -54,6 +54,7 @@ LinkedList.prototype.enqueue = function(value) {
 	if (this.isEmpty()){
 		this.head = this.tail;
 	} else {
+		// point old tail to new tail
 		oldtail.next = this.tail;
 	}
 
@@ -74,9 +75,8 @@ LinkedList.prototype.dequeue = function() {
 	if(this.head.value === this.tail.value){
 		this.head.value = null;
 		this.tail.value = null;
-	}
-	// move the head pointer to next
-	else {
+	} else {
+		// point head to next
 		this.head = this.head.next;
 	}
 
