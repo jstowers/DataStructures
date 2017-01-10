@@ -1,20 +1,20 @@
 // Joseph Stowers
-// Stack with Linked List Implementation
-// January 8, 2017
+// Queue with Linked List Implementation
+// January 9, 2017
 
-//  Stack API
+//  Queue API
 /*
-	LIFO = Last In, First Out
+	FIFO = First In, First Out
 
-	1.	Create an empty stack
+	1.	Create an empty queue
 
-	2.	push(value) => insert a new value onto the stack
+	2.	enqueue(value) => insert a new item at the end of the queue
 
-	3.	pop() => remove and return most recently added value
+	3.	dequeue() => remove and return the item at the head of the queue
 
-	4.	isEmpty() => returns T/F if stack empty
+	4.	isEmpty() => returns T/F if queue empty
 
-	5.	size() => returns the number of items in the stack
+	5.	size() => returns the number of items in the queue
 */
 
 
@@ -29,31 +29,33 @@ let LinkedList = function(initialValue) {
 
 	if (initialValue) {
 		this.head = Node(initialValue);
+		this.tail = this.head;
 		this.N = 1;
 	} else {
 		this.head = Node(null);
+		this.tail = Node(null);
 		this.N = 0;
 	}
 
 };
 
-LinkedList.prototype.push = function(value) {
+LinkedList.prototype.enqueue = function(value) {
 
-	// save a link to the old head
-	let oldhead = this.head;
+	// save a link to the old tail
+	let oldtail = this.tail;
 
-	// create a new head with the current value
-	this.head = new Node(value);
+	// create a new tail with the current value
+	this.tail = new Node(value);
 
-	// assign oldhead to next
-	this.head.next = oldhead;
+	// assign oldtail to next
+	this.tail.next = oldtail;
 
-	// increment the size of the stack
+	// increment the size of the queue
 	this.N += 1;
 
 };
 
-LinkedList.prototype.pop = function() {
+LinkedList.prototype.dequeue = function() {
 
 	let item = this.head.value;
 
@@ -89,22 +91,22 @@ let string = fs.readFileSync(process.argv[2], 'utf-8');
 // Split string into array
 let strToArr = string.split(" ");
 
-// Create a stack with linked list implementation
-let stack = new LinkedList();
+// Create a queue with linked list implementation
+let queue = new LinkedList();
 
 // Loop through string array and test stack functionality
 while( strToArr.length > 0 ) {
 
 	// if strToArr[0] = '-', pop string from stack and output
 	if (strToArr[0] === '-') {
-		let output = stack.pop();
+		let output = queue.dequeue();
 		console.log('output =', output);
-		console.log('size = ', stack.size());
+		console.log('size = ', queue.size());
 	}
 
-	// otherwise, push strToArr[0] onto stack
+	// otherwise, push strToArr[0] onto end of queue
 	else {
-		stack.push(strToArr[0]);
+		queue.enqueue(strToArr[0]);
 	}
 
 	// string.slice()
