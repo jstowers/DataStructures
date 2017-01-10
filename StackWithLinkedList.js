@@ -26,11 +26,12 @@ let LinkedList = function(initialValue) {
 
 	if (initialValue) {
 		this.head = Node(initialValue);
+		this.N = 1;
 	} else {
 		this.head = Node(null);
+		this.N = 0;
 	}
 
-	this.N = 0;
 };
 
 LinkedList.prototype.push = function(value) {
@@ -74,7 +75,7 @@ LinkedList.prototype.size = function() {
 	return this.N;
 }
 
-
+// CLIENT
 
 // Require file system module
 let fs = require('fs');
@@ -88,19 +89,17 @@ let strToArr = string.split(" ");
 // Create a stack with linked list implementation
 let stack = new LinkedList();
 
-
 // Loop through string array and test stack functionality
 while( strToArr.length > 0 ) {
 
-	// test stack functionality
-	// if string[0] = '-', pop string from stack and print
+	// if strToArr[0] = '-', pop string from stack and output
 	if (strToArr[0] === '-') {
 		let output = stack.pop();
 		console.log('output =', output);
 		console.log('size = ', stack.size());
 	}
 
-	// otherwise, push string[0] onto stack
+	// otherwise, push strToArr[0] onto stack
 	else {
 		stack.push(strToArr[0]);
 	}
