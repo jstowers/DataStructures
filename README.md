@@ -6,6 +6,7 @@ Data Structures &amp; Algorithms
 
 This program creates a queue data structure by implementing a linked list.
 
+
 *Queue Data Structure*
 
 A queue is a data structure based on the FIFO algorithm => First In, First Out.  
@@ -29,15 +30,14 @@ This separation allows for modular, reusable libraries and efficient, reliable
 testing.
 
 
-*Implementation*
+*Linked List Implementation*
 
-For the linked list, two pointers, a head and tail, are maintained.  
-These pointers allow an item to be added to the tail (enqueue) or removed 
-from the head (dequeue).
+For the linked list, two pointers, a head and tail, are maintained.  These pointers 
+allow an item to be added to the tail (enqueue) or removed from the head (dequeue).
 
-For a queue, the time complexity for adding (enqueuing) or removing (dequeuing) an
-item is constant, O(1), because an item is enqueued or dequeued in a discrete sequence 
-of steps.  No looping through the linked list is needed.
+The time complexity for adding (enqueuing) or removing (dequeuing) an item is constant, O(1), 
+because an item is enqueued or dequeued in a discrete sequence of steps.  No looping through 
+the linked list is needed.
 
 
 *Run the Program*
