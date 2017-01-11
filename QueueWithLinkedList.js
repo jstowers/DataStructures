@@ -44,46 +44,51 @@ let LinkedList = function(initialValue) {
 
 LinkedList.prototype.enqueue = function(value) {
 
-	// save a link to the old tail
+	console.log('+++ ENQUEUE +++')
+
+	// save a reference to the old tail
 	let oldtail = this.tail;
 
-	// create a new tail with the current value
+	// create a new tail with the new value
 	this.tail = new Node(value);
 
-	// if queue is empty, set head equal to tail
+	// if queue is empty, set head pointer equal to tail pointer
 	if (this.isEmpty()){
 		this.head = this.tail;
 	} else {
-		// point old tail to new tail
+		// update link by pointing old tail to new tail
 		oldtail.next = this.tail;
 	}
 
 	// increment the size of the queue
 	this.N += 1;
 
-	console.log('this after enqueue ', this)
+	console.log('queue =', this)
 
 };
 
 LinkedList.prototype.dequeue = function() {
 
+	console.log('--- DEQUEUE ---')
+
 	let item = this.head.value;
 
 	// if head and tail values are equal, then
 	// dequeuing the last node in the list.
-	// therefore, reset head and tail values to null
+	// Reset head and tail values to null
 	if(this.head.value === this.tail.value){
 		this.head.value = null;
 		this.tail.value = null;
 	} else {
-		// point head to next
+		// update link by pointing head to next
 		this.head = this.head.next;
 	}
 
 	// decrement the size of the queue
 	this.N -= 1;
 
-	console.log('this after dequeue ', this)
+	console.log('item dequeued =', item);
+	console.log('queue =', this);
 
 	return item;
 
@@ -117,7 +122,7 @@ let queue = new LinkedList();
 // Loop through string array and test queue functionality
 while( strToArr.length > 0 ) {
 
-	// if string = '-', dequeue string from queue and output
+	// if string element equals '-', dequeue string from queue and output
 	if (strToArr[0] === '-') {
 		queue.dequeue();
 	}
