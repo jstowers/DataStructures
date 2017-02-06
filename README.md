@@ -7,6 +7,7 @@ Data Structures &amp; Algorithms
 This program creates a stack data structure by implementing a linked list.
 
 A stack is a data structure based on the LIFO algorithm => Last In, First Out.
+
 This means that the last item added (pushed) to the stack is the first item
 removed (popped).
 
@@ -19,6 +20,12 @@ This program creates a queue data structure by implementing a linked list.
 A queue is a data structure based on the FIFO algorithm => First In, First Out.  
 This means that the first item added (enqueued) to the queue will be the first 
 item removed (dequeued).
+
+
+## Hash Table
+### Monday, February 6, 2017
+
+
 
 
 ## Modular Programming
