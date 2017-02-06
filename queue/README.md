@@ -33,6 +33,14 @@ tail = pointer to the last item added to the queue
 		$ node app.js
 
 
+	2.	The string variable is used to create the queue.  To test the 
+	functionality, the '-' mark represents a call to dequeue().
+
+	3.	You can change string and test the queue functionality yourself.
+
+	4.  You can also implement stringFile.txt from the comma
+
+
 ## To Do
 
 - [ ] Determine how to feed a command line argument (stringFile.txt) into
