@@ -17,7 +17,8 @@ removed (popped).
 
 This program creates a queue data structure by implementing a linked list.
 
-A queue is a data structure based on the FIFO algorithm => First In, First Out.  
+A queue is a data structure based on the FIFO algorithm => First In, First Out.
+
 This means that the first item added (enqueued) to the queue will be the first 
 item removed (dequeued).
 
