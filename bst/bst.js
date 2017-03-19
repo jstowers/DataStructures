@@ -1,173 +1,157 @@
-// Binary Search Array
-// March 17, 2017
-
+// Binary Search Tree
+// March 19, 2017
 
 /*
-	Given:
-		1. a sorted array, and
-		2. a target value.
+ 	Tree Shape
+	
+		- Many different BST's can be made from the same set of keys
+	
+		- Tree shape depends on order of insertion of keys
 
-	Use binary search to return the index of the target value
-	or -1 if the target value does not exist in the array.
+		- Can develop algorithms to control insertion
 
 
+	Performance
 
-	Psued
+		- Best => perfectly balanced
 
-	1.	Determine length of array
+		- Typical => slightly off-balance, either left or right
 
-			length = array.length
+		- Worst => linear order with no branches; no benefit
+		of tree shape; same as a linked list
 
-	2.	Set starting index as midpoint of array (iStart)
 
-		- if length is even, set starting point at length - length/2
+	Mathematical Analysis
 
-			index = 4 - 4/2 = 2
+	If N distinct keys are inserted into a BST in random order:
 
-			then subtract 1 since array indices begin at 0
+	1.	Average
 
-			iStart = 2 - 1 = iMin + 1
+			# compares for search/insert = ~2*ln(N)
 
-		- if length is odd, set starting point at length/2
+	2.	Worst (height of tree)
 
-			index = 5/2 = 2.5 
+			# compares for search/insert = ~4.311*ln(N)
 
-			round up to near integer = 3
+	3.	Absolute Worst Case
 
-			then subtract 1 since array indices begin at 0
+			If keys come in certain random orders
 
-			iStart = 3 - 1 = iMin + 2
+			# compares for search/insert (time) = ~ N
 
-	3.	Determine currValue at array[iStart]
-
-			currValue = array[iStart]
-
-	4.	Is currValue = target?
-
-		YES: return iStart
-
-		NO:
-
-	4.	Is currValue < or > target value?
-
-			if < target => new array length = iStart - 1
-
-				iMin = 0,
-
-				iMax = iStart
-
-				new array = [0, iStart-1]
-
-			if currValue > target
-
-				iMin = iStart
-
-				iMax = array.length - 1
-
-				new array length = [iStart+1, iMax]
-
-	5.	Make recursive call
-
-			recursive(array, target, iMin, iMax)
-
+	Source:  How Tall is a Tree? Bruce Reed, CNRIS, Paris, France
 */
 
 
-function binarySearch (array, target) {
-
-	function recursive(array, target, iMin, iMax) {
-
-		console.log('array =', array, "  target =", target);
-
-		// determine array length
-		let length = array.length;
-		//console.log('array length = ', length);
-
-		// Base Cases to Stop Recursion
-		// if length = 0 and value does not equal target, return -1
-		if(length === 1 && array[0] !== target) {
-			return -1;
-		}
-		else if (length === 1 && array[0] === target) {
-			return iMax;
-		}
-		
-		// determine array midpoint
-		if(length%2 === 0){
-			iStart = length - length/2 - 1;
-		} else {
-			iStart = Math.ceil(length/2) - 1;
-		}
-
-		let currVal = array[iStart];
-		console.log('iMin = ', iMin, ' iStart = ', iStart, "  iMax =", iMax);
-
-		if (currVal === target) {
-			return iMin + iStart;
-		}
-		
-		else if (currVal > target) {
-			console.log('currVal ' + currVal + '  > target ' + target)
-			iMin = iMin;
-			iMax = iMax-1;
-			array = array.slice(iMin, iStart);
-
-		} else {
-			console.log('currVal ' + currVal + '  < target ' + target)
-			iMin = iStart + 1;
-			iMax = iMax;
-			array = array.slice(iStart+1);
-		}
-
-		//console.log('array = ', array);
-		console.log('iMin = ', iMin, "iMax = ", iMax);
-		console.log('************************');
-
-		return recursive(array, target, iMin, iMax);
-
-	}
-
-	let result = recursive(array, target, 0, array.length-1);
-
-	console.log('result =', result);
-
-	return result;
-
+// constructor function
+function BST(value) {
+	this.value = value;
+	this.left = null;
+	this.right = null;
 }
 
-console.log('-------------------------------');
-console.log(binarySearch([4],5)); // WORKS!
+// insert method
+// 1. take in a value
+// 2. make a new BST with that value (node)
+// 3. place node into original BST in correct location
+// cost:  number of compares = 1 + depth of node
+BST.prototype.insert = function(value) {
 
-console.log('-------------------------------');
-console.log(binarySearch([5],5)); // WORKS!
+	// value <= current node:  move to the left
+	// Is there a left child?
+	//	 NO => create new BST for left child with value
+	//	 YES => call insert() again, passing in the value
+	if (value <= this.value) {
+		if (!this.left) {
+			this.left = new BST(value);
+		} else {
+			this.left.insert(value);
+		}
 
-console.log('-------------------------------');
-console.log(binarySearch([11, 12, 13, 15, 16], 12)); // WORKS!!
+	// value > current node:  move to the right
+	} else if (value > this.value) {
+		if(!this.right) {
+			this.right = new BST(value);
+		} else {
+			this.right.insert(value);
+		}
+	}
+};
+
+// contains method
+// cost:  number of compares = 1 + depth of node
+BST.prototype.contains = function(value) {
+
+	console.log('this.value =', this.value);
+
+	// Does value = node.value we are acting on?
+	if (value === this.value) {
+		return true;
+	} 
+	else if (value < this.value) {
+	// Is there a left child?
+		// NO
+		if(!this.left) {
+			return false;
+		// YES
+		} else {
+			return this.left.contains(value);
+		}
+	}
+	else if (value > this.value) {
+	// Is there a right child?
+		// NO
+		if(!this.right) {
+			return false;
+		} else {
+			return this.right.contains(value);
+		}
+	}
+}
 
 
-console.log('-------------------------------');
-console.log(binarySearch([1, 22, 33, 45, 53, 62], 45));
-
-console.log('-------------------------------');
-console.log(binarySearch([11, 12, 13, 14, 15], 12));
+var bst = new BST(50);
+bst.insert(30);
+bst.insert(70);
+bst.insert(100);
+bst.insert(60);
+bst.insert(59);
+bst.insert(20);
+bst.insert(45);
+bst.insert(35);
+bst.insert(85);
+bst.insert(105);
+bst.insert(10);
 
 /*
-console.log(binarySearch([2,5,7], 1));
+console.log('bst =', bst);
 
-console.log('-------------------------------');
+console.log(bst.right.left.left);
 
-console.log(binarySearch([11, 12, 13, 15, 16], 12));
+console.log(bst.left.right.left);
 
-console.log('-------------------------------');
-
-console.log(binarySearch([3, 9, 10, 12], 12));
-
-console.log('-------------------------------');
-
-console.log(binarySearch([5, 6, 9, 10, 11, 12], 12));
-
-console.log('-------------------------------');
-
-console.log(binarySearch([0, 2, 5, 6, 9, 10, 11, 12, 45, 800, 1000], 45));
+console.log(bst.right.right);
 */
+
+console.log('85: ', bst.contains(85));
+
+console.log('69: ', bst.contains(69));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
