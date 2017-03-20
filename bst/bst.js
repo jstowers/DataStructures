@@ -109,6 +109,69 @@ BST.prototype.contains = function(value) {
 	}
 }
 
+/*
+	BST Traversal
+
+	1.  Min
+
+			- How do we find the smallest key in the table?
+
+			- Move left of the root until we find a node
+			with a null key
+
+	2.  Max
+
+			- How about the largest key?
+
+			- Move right of the root until we find a null key
+
+	3.	Floor
+
+			- How do we find the largest key <= a given key?
+
+	4.	Ceiling
+
+			- How doe we find the smallest key >= a given key?
+
+*/
+
+// Depth First Traversal
+
+/*
+	Description
+	-	Travel through all the nodes in BST and run 
+	the iterator callback function on each node.  
+
+	-	Start at top node and follow each node all the
+	way to the bottom, before moving up to the next branch.
+
+	- 	In order version => will run iterator function on each
+	node, going from smallest to largest
+
+			Left child node -> Parent node -> Right child node
+
+			Will use recursive call to iterator function
+*/
+
+// In Order Traversal - smallest to largest
+BST.prototype.depthFirstTraversal = function(iteratorFunc) {
+
+	// console.log('this = ', this);
+
+	// left child
+	if(this.left) {
+		this.left.depthFirstTraversal(iteratorFunc);
+	}
+
+	// current node value
+	iteratorFunc(this.value);
+
+	// right child
+	if(this.right) {
+		this.right.depthFirstTraversal(iteratorFunc);
+	}
+}
+
 
 var bst = new BST(50);
 bst.insert(30);
@@ -123,6 +186,7 @@ bst.insert(85);
 bst.insert(105);
 bst.insert(10);
 
+
 /*
 console.log('bst =', bst);
 
@@ -131,11 +195,50 @@ console.log(bst.right.left.left);
 console.log(bst.left.right.left);
 
 console.log(bst.right.right);
-*/
 
 console.log('85: ', bst.contains(85));
 
 console.log('69: ', bst.contains(69));
+*/
+
+
+// Basic callback function
+function log(value) {
+	console.log(value);
+}
+
+
+// Depth first traversal
+bst.depthFirstTraversal(log);
+
+
+// Determine minimum value of BST
+function minVal(root) {
+
+	if (root.left === null) {
+		return root.value;
+	}
+
+	return minVal(root.left);
+}
+
+
+// Determine maximum value of BST
+function maxVal(root) {
+
+	if (root.right === null) {
+		return root.value;
+	}
+
+	return maxVal(root.right);
+}
+
+
+console.log('minVal = ', minVal(bst))
+console.log('maxVal = ', maxVal(bst))
+
+
+
 
 
 
