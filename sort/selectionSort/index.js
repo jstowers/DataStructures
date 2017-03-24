@@ -38,8 +38,9 @@
 
 let array = [7, 10, 5, 3, 8, 4, 2, 9, 6];
 
-function insertionSort(array) {
+function selectionSort(array) {
 
+	let totalEntries = array.length;
 	let min;
 	let count = 0;
 
@@ -60,8 +61,14 @@ function insertionSort(array) {
 		count++;
 	}
 
-	return [array, count];
+	return [array, totalEntries, count];
 }
 
-console.log('insertionSort array =', insertionSort(array)[0]);
-console.log('insertionSort exchanges =', insertionSort(array)[1]);
+console.log('selectionSort array =', selectionSort(array)[0]);
+console.log('selectionSort total entries =', selectionSort(array)[1]);
+console.log('selectionSort exchanges =', selectionSort(array)[2]);
+
+let array2 = ['S', 'O', 'R', 'T', 'E', 'X', 'A', 'M', 'P', 'L', 'E'];
+console.log('selectionSort array =', selectionSort(array2)[0]);
+console.log('selectionSort total entries =', selectionSort(array2)[1]);
+console.log('selectionSort exchanges =', selectionSort(array2)[1]);
