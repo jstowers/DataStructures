@@ -12,7 +12,9 @@
 	Loop backwards through array, decrementing j, and exchange values until you 
 	reach a value that is smaller.
 
-	Exit inner j loop and increment i.
+	All elements that have been seen are sorted in ascending order.  
+
+	Exit inner j loop and increment i.  Loop back up.
 
 */
 
@@ -38,9 +40,6 @@ function insertSort(array) {
 
 	return array;
 }
-
-
-
 
 
 // AVERAGE CASE => randomly-sorted array with distinct keys
