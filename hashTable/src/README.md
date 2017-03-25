@@ -10,6 +10,11 @@
 
     Very fast runtime.
 
+### Practical Uses ###
+
+    Email provider storing addresses
+    Users of an application
+
 ### Data Type ###
 
     Items are saved in a key-indexed table, where 
