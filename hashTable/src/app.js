@@ -49,7 +49,12 @@ HashTable.prototype.insert = function(key, value) {
 	// place new node in bucket
 	if (!this.buckets[index]) {
 		this.buckets[index] = new HashNode(key, value);
-	} 
+	}
+	// check first node in bucket
+	// will update information if already exists
+	else if (this.buckets[index].key === key){
+		this.buckets[index].value = value;
+	}
 	// if bucket is not empty,
 	// travel through chain using while loop
 	// and then attach the new node at the end
@@ -58,13 +63,64 @@ HashTable.prototype.insert = function(key, value) {
 
 		while (currentNode.next) {
 
+			// update an existing key:value pair
+			// then stop method rest of method
+			if (currentNode.next.key === key) {
+				currentNode.next.value = value;
+				return;
+			}
 			currentNode = currentNode.next;
-
 		}
 
 		currentNode.next = new HashNode(key, value);
 	}
 }
+
+
+// Get Method
+// Will take in a key and return its value
+// Will return null if the key does not exist in the table.
+HashTable.prototype.get = function(key) {
+
+	let index = this.hash(key);
+
+	if (!this.buckets[index]) {
+		return null;
+	} else {
+
+		let currentNode = this.buckets[index];
+
+		while(currentNode) {
+			if (currentNode.key === key) {
+				return currentNode.value;
+			}
+			currentNode = currentNode.next
+		}
+
+		return null;
+	}
+}
+
+
+// Retrieve All Method
+// Return an array of all hash nodes in our table
+HashTable.prototype.retrieveAll = function() {
+
+	let allNodes = [];
+	let length = this.numBuckets;
+
+	for (let i = 0; i < length; i++) {
+
+		let currentNode = this.buckets[i];
+
+		while (currentNode) {
+			allNodes.push(currentNode);
+			currentNode = currentNode.next
+		}
+	}
+	return allNodes;
+}
+
 
 
 // Create new hash table
@@ -114,6 +170,28 @@ let watchList = [
 			model: 'Submariner',
 			price: 6995
 		}
+	},
+	{
+		key: 'Patek Philippe',
+		value: {
+			model: 'Grand Complications',
+			price: 729000
+
+		}
+	},
+	{
+		key: 'TAG Heuer',
+		value: {
+			model: 'Carrera HEUER 01',
+			price: 6300
+		}
+	},
+		{
+		key: 'GAT Heuer',
+		value: {
+			model: 'Carrera Calibre',
+			price: 6300
+		}
 	}
 ];
 
@@ -134,7 +212,11 @@ function insertHashNodes(hashTable, array) {
 insertHashNodes(myHT, watchList);
 console.log('myHT =', myHT.buckets)
 
+console.log('myHT get hublot =', myHT.get('Hublot'));
+console.log('myHT get patek =', myHT.get('Patek Philippe'));
 
+// Testing the retrieveAll method
+console.log('retrieveAll = ', myHT.retrieveAll());
 
 
 
