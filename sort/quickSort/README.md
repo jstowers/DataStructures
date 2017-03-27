@@ -4,18 +4,18 @@ ___March 26, 2017___
 
 ## Background
 
-Honored as one of the top 10 algorithms of the 20th century.
+- Honored as one of the top 10 algorithms of the 20th century.
 
-Invented in 1961 by Sir Tony Hoare, a British computer scientist.
+- Invented in 1961 by Sir Tony Hoare, a British computer scientist.
 
-Widely used for system sorts and many other applications.
+- Widely used for system sorts and many other applications.
 
-Recursion occurs _after_ the work is done, not before like Mergesort.
+- Recursion occurs _after_ the work is done, not before like Mergesort.
 
 
 ## Advantages
 
-Divide-and-conquer algorithm
+Divide-and-conquer algorithm.
 
 Unlike Mergesort which requires an extra array (more storage), Quicksort
 partitions in place.
