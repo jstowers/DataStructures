@@ -3,11 +3,8 @@
 // Joseph Stowers
 // March 26, 2007
 
-//let string = 'QUICKSORTEXAMPLE';
-let string ='AZBCD'
+let string = 'QUICKSARTEX';
 let array = string.split('');
-console.log('array =', array);
-console.log('array length =', array.length); // 16
 
 let arrayShuffle = shuffle(array);
 console.log('arrayShuffle =', arrayShuffle);
@@ -34,16 +31,12 @@ function shuffle(array) {
 
 function partition (arr, lo, hi) {
 
-	let i = lo;
+	let i = lo+1;
 	let j = hi;
 
-	console.log('arr =', arr, '  arr[lo] =', arr[lo]);
-	
-	// while(true) {
-		//console.log('INSIDE WHILE');
+	while(i < j) {
 
-		while (arr[i+1] < arr[lo]) {
-
+		while (arr[i] <= arr[lo]) {
 			console.log('i =', i, '  arr[i] =', arr[i]);
 			i++;
 			if (i === hi) break;
@@ -55,27 +48,23 @@ function partition (arr, lo, hi) {
 			if (j === lo) break;
 		}
 
-		// check if pointers cross
-		// if yes, exchange pointers
-
-		console.log('i =', i, 'j =', j);
-
-		if (i >= j) {
-			console.log('inside i > j')
-			let temp = arr[i];
-			arr[i] = arr[j];
-			arr[j] = temp;
+		if (i < j) {
+			temp = arr[j];
+			arr[j] = arr[i];
+			arr[i] = temp;
 		}
 
-	//}
+		console.log('arr after =', arr, '  i =', i, '  j =', j);
+
+	}
 
 	temp = arr[lo];
 	arr[lo] = arr[j];
 	arr[j] = temp;
 
 	console.log('arr =', arr);
-	return j;
+	return [j, array];
 
 }
 
-console.log('partition j =', partition(arrayShuffle, 0, arrayShuffle.length-1))
+console.log('partition index =', partition(array, 0, array.length-1))
