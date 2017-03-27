@@ -64,7 +64,13 @@ Phase 1:  Repeat until i and j pointers cross:
 Phase 2:  When pointers cross:
 
     - exchange a[lo] with a[j]
+
     - pointer a[j] is now pointing to the original partitioning element a[lo]
+
     - everything to the left of a[j] < a[j]
+
     - everything to the right of a[j] > a[j]
 
+Phase 3:   Recursively sort the left and right subarrays in the same manner.
+
+Complete:  The array is sorted in ascending order.  Congrats!!
