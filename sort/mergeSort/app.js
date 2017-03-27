@@ -25,7 +25,6 @@ function mergeSort(array) {
 
 }
 
-
 function merge(left, right) {
 
 	let result = [];
