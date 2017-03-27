@@ -17,10 +17,10 @@ ___March 26, 2017___
 
 Divide-and-conquer algorithm.
 
-Unlike Mergesort which requires an extra array (more storage), Quicksort
-partitions in place.
-
 Shuffling is needed to guarantee performance.
+
+Unlike Mergesort which requires an extra array (more storage), Quicksort
+partitions and sorts in place.
 
 39% more compares than Mergesort.
  
