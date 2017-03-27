@@ -2,8 +2,14 @@
 
 ___March 25, 2017___
 
+## Background - Sedgewick, p. 282
+
+John von Neumann created algorithm for EDVAC computer.
+
+Mergesort implements the divide-and-conquer paradigm, one
+of the most efficient algorithm designs.
+
 ## Basic Plan
-John von Neumann created algorithm for EDVAC computer
 
 1.  Divide array into two halves.
 
@@ -11,27 +17,48 @@ John von Neumann created algorithm for EDVAC computer
 
 3.  Merge two halves
 
-### How do you do this?
+### How Do We Do This?
 
-1.  You have two sorted sub-arrays 
+___Abstract In-Place Merge___
+
+1.  Divide an array in two
+
+        mid = Math.floor(array.length / 2)
+
+2.  Sort the sub-arrays
+
         a[lo] -> a[mid]
         a[mid+1] -> a[hi]
 
-2.  You copy the sorted array into an auxiliary array
+3.  Combine the sorted sub-arrays into the final array (finArr)
 
-3.  You keep three pointers:
+4.  Copy the combined array into an auxiliary array (auxArr)
 
-        i   sub-array 1
-        j   sub-array 2
-        k   main array
+3.  Keep three pointers:
 
-4.  Compare min in each sub-array
+        i   auxArr (lo -> mid)
+        j   auxArr (mid + 1, hi)
+        k   finArr (final array)
 
-        whichever is smaller, move to main array
+4.  Compare auxArr[i] and auxArr[j]:
 
-        then increment counter of that sub-array
+        whichever is smaller, push to finArr[k]
 
-5.  
+        if equal, choose auxArr[i]
+
+        if i === mid, push auxArr[j]
+
+        if j > hi, push auxArr[i]
+
+5.  Increment counters:
+        
+        increment counter (i or j) of that sub-array
+
+        increment counter of finArr (k)
+
+6.  Loop until all elements both sub-arrays have been examined
+
+7.  Return finArr
 
 
 
