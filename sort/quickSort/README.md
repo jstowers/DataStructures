@@ -12,6 +12,27 @@ Widely used for system sorts and many other applications.
 
 Recursion occurs _after_ the work is done, not before like Mergesort.
 
+
+## Advantages
+
+Divide-and-conquer algorithm
+
+Unlike Mergesort which requires an extra array (more storage), Quicksort
+partitions in place.
+
+Shuffling is needed to guarantee performance.
+
+39% more compares than Mergesort.
+ 
+Faster than Mergesort in most cases, because less data movement:
+
+    Best case:      Number of compares ~ N*(log N), like Mergesort
+    
+    Avg case:       Number of compares ~ 1.39*N*(log N)
+
+    Worst case:     Number of compares ~ 0.5*(N^2), if random shuffle puts everything in order.
+
+
 ## Basic Plan
 
 1.  Randomly shuffle the array
@@ -30,17 +51,20 @@ Recursion occurs _after_ the work is done, not before like Mergesort.
 
 Phase 1:  Repeat until i and j pointers cross:
 
-        - arbitrarily choose first element as partitioning element, a[lo]
-        
-        - maintain an i pointer that moves from left to right, as long
-        as it points to an element a[i] < partitioning element a[lo]
-        
-        - maintain a j pointer that moves from right to left, as long as 
-        it points to an element a[j] > partitioning element a[lo]
+    - arbitrarily choose first element as partitioning element, a[lo]
+    
+    - maintain an i pointer that moves from left to right, as long
+    as it points to an element a[i] < partitioning element a[lo]
+    
+    - maintain a j pointer that moves from right to left, as long as 
+    it points to an element a[j] > partitioning element a[lo]
 
-        - exchange a[i] and a[j]
+    - exchange a[i] and a[j]
 
+Phase 2:  When pointers cross:
 
-
-
+    - exchange a[lo] with a[j]
+    - pointer a[j] is now pointing to the original partitioning element a[lo]
+    - everything to the left of a[j] < a[j]
+    - everything to the right of a[j] > a[j]
 
