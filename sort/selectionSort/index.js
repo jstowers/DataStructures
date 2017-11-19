@@ -1,16 +1,18 @@
 // Selection Sort
-// March 23, 2017
+// March 23, 2017 (orig)
+// November 19, 2017 (revised)
 
 /*
+
 	Algorithm
 
-	1. 	Begin with unsorted array
+	1. 	Begin with an unsorted array
 
-	2. 	In iteration i, find index min of smallest remaining entry
+	2. 	In iteration i, find index of smallest remaining entry (min)
 
 	3.	Swap a[i] and a[min]
 
-	4.	Increment i and check remaining elements
+	4.	Increment i and check remaining entries
 
 
 	Invariants
@@ -36,39 +38,77 @@
 		Data movement is minimal => only one exchange into final position.
 */
 
-let array = [7, 10, 5, 3, 8, 4, 2, 9, 6];
 
-function selectionSort(array) {
 
-	let totalEntries = array.length;
+function selectionSort(unsortedArray) {
+
+	let totalEntries = unsortedArray.length;
 	let min;
-	let count = 0;
+	let exchangeCount = 0;
+	let compareCount = 0;
+
+	// copy unsorted array to preserve for 
+	// printing to results
+	let array = unsortedArray.slice();
 
 	for (let i = 0; i < array.length; i++) {
 
 		min = i;
 
+		// find min value in remaining elements
 		for (let j = i+1; j < array.length; j++) {
 
 			if (array[j] < array[min]) {
 				min = j;
 			}
+
+			compareCount++;
 		}
 
+		// swap index value and min value
 		let temp = array[i];
 		array[i] = array[min];
 		array[min] = temp;
-		count++;
+
+		// increase count
+		exchangeCount++;
 	}
 
-	return [array, totalEntries, count];
+	return [array, totalEntries, compareCount, exchangeCount];
 }
 
-console.log('selectionSort array =', selectionSort(array)[0]);
-console.log('selectionSort total entries =', selectionSort(array)[1]);
-console.log('selectionSort exchanges =', selectionSort(array)[2]);
+
+let array1 = [7, 10, 5, 3, 8, 4, 2, 9, 6];
+let exampleOne = selectionSort(array1);
+printResults(array1, exampleOne);
+
 
 let array2 = ['S', 'O', 'R', 'T', 'E', 'X', 'A', 'M', 'P', 'L', 'E'];
-console.log('selectionSort array =', selectionSort(array2)[0]);
-console.log('selectionSort total entries =', selectionSort(array2)[1]);
-console.log('selectionSort exchanges =', selectionSort(array2)[1]);
+let exampleTwo = selectionSort(array2);
+printResults(array2, exampleTwo);
+
+/*
+let string3 = 'supercalifragilisticexpialidocious';
+let array3 = string3.toUpperCase().split("");
+let exampleThree = selectionSort(array3);
+printResults(array3, exampleThree);
+*/
+
+function printResults(initialArray, results) {
+
+	if (initialArray.length === 0) {
+		console.log('-----------------------------------------');
+		console.log('ERROR: no results to print.');
+		console.log('-----------------------------------------');
+		return;
+	}
+
+	console.log('-----------------------------------------');
+	console.log('Selection Sort Results:')
+	console.log('initial array =', initialArray);
+	console.log('sorted array  =', results[0]);
+	console.log('total entries =', results[1]);
+	console.log('number of compares  =', results[2]);
+	console.log('number of exchanges =', results[3]);
+	console.log('-----------------------------------------');
+}
