@@ -7,11 +7,18 @@
 let string = ['Z', 'Y', 'X', 'W', 'V', 'A', 'T', 'Z', 'B', 'G'];
 console.log('string', string);
 
-// Recursive function that divides arrays in two,
+// Recursive function that divides array in two,
 // passing the subarrays to be merged with elements in
 // ascending order
 
+// Average sort time = n * log(n)
+
+let count = 0;
+
 function mergeSort(array) {
+
+	console.log('array =', array);
+	
 
 	if(array.length < 2) {
 		return array
@@ -28,6 +35,10 @@ function mergeSort(array) {
 function merge(left, right) {
 
 	let result = [];
+
+	console.log('left list =', left);
+	console.log('right list =', right);
+	count += 1;
 
 	while (left.length && right.length) {
 		if (left[0] < right[0]) {
@@ -47,7 +58,7 @@ function merge(left, right) {
 }
 
 console.log('mergeSort', mergeSort(string));
-
+console.log('count =', count);
 
 /* 
 

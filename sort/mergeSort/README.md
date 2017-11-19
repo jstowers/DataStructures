@@ -1,6 +1,7 @@
 # Mergesort
 
 ___March 25, 2017___
+___rev. November 19, 2017___
 
 ## Background - Sedgewick, p. 282
 
@@ -9,15 +10,28 @@ John von Neumann created algorithm for EDVAC computer.
 Mergesort implements the divide-and-conquer paradigm, one
 of the most efficient algorithm designs.
 
+see Sedgewick and Wayne, Algorithms, p. 282
+
 ## Basic Plan
 
 1.  Divide array into two halves.
+       input array     M E R G E S O R T E X A M P L E
+       divide in half  M E R G E S O R | T E X A M P L E
 
 2.  Recursively sort each half.
+        sort left      E E G M O R R S |
+        sort right                       A E E L M P T X
 
-3.  Merge two halves
+3.  Merge the two halves.
+        final result   A E E E G L M M O P R R S T X
+        
+## Time Complexity (# compares)
 
-### How Do We Do This?
+        Best     n * log(n)
+        Average  n * log(n)
+        Worst    n * log(n)
+
+## Alogorithm
 
 ___Abstract In-Place Merge___
 
@@ -56,7 +70,7 @@ ___Abstract In-Place Merge___
 
         increment counter of finArr (k)
 
-6.  Loop until all elements both sub-arrays have been examined
+6.  Loop until all elements of both sub-arrays have been examined
 
 7.  Return finArr
 
