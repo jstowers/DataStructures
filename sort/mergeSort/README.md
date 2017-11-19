@@ -1,9 +1,10 @@
 # Mergesort
 
-___March 25, 2017___
+___orig. March 25, 2017___
+
 ___rev. November 19, 2017___
 
-## Background - Sedgewick, p. 282
+## Background
 
 John von Neumann created algorithm for EDVAC computer.
 
@@ -15,15 +16,21 @@ see Sedgewick and Wayne, Algorithms, p. 282
 ## Basic Plan
 
 1.  Divide array into two halves.
+```
        input array     M E R G E S O R T E X A M P L E
        divide in half  M E R G E S O R | T E X A M P L E
+```
 
 2.  Recursively sort each half.
+```
         sort left      E E G M O R R S |
         sort right                       A E E L M P T X
+```
 
 3.  Merge the two halves.
+```
         final result   A E E E G L M M O P R R S T X
+```
         
 ## Time Complexity (# compares)
 
@@ -31,7 +38,7 @@ see Sedgewick and Wayne, Algorithms, p. 282
         Average  n * log(n)
         Worst    n * log(n)
 
-## Alogorithm
+## Algorithm
 
 ___Abstract In-Place Merge___
 

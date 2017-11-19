@@ -40,6 +40,8 @@ function merge(left, right) {
 	console.log('right list =', right);
 	count += 1;
 
+	// shift() removes the first element of an
+	// array and returns that element.
 	while (left.length && right.length) {
 		if (left[0] < right[0]) {
 			result.push(left.shift());
