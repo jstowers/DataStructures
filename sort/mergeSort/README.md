@@ -27,7 +27,7 @@ see Sedgewick and Wayne, Algorithms, p. 282
         sort right                       A E E L M P T X
 ```
 
-3.  Merge the two halves.
+3.  Merge the sorted halves.
 ```
         final result   A E E E G L M M O P R R S T X
 ```
@@ -51,15 +51,15 @@ ___Abstract In-Place Merge___
         a[lo] -> a[mid]
         a[mid+1] -> a[hi]
 
-3.  Combine the sorted sub-arrays into the final array (finArr)
+3.  Combine the sorted sub-arrays from a[lo] to a[hi] into an array called finArr.
 
-4.  Copy the combined array into an auxiliary array (auxArr)
+4.  Copy the combined array (finArr) into an auxiliary array (auxArr)
 
 3.  Keep three pointers:
 
         i   auxArr (lo -> mid)
-        j   auxArr (mid + 1, hi)
-        k   finArr (final array)
+        j   auxArr (mid + 1 -> hi)
+        k   finArr (current entry in finArr)
 
 4.  Compare auxArr[i] and auxArr[j]:
 
