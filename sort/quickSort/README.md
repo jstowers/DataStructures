@@ -1,6 +1,8 @@
 # Quicksort
 
-___March 26, 2017___
+___orig. March 27, 2017___
+
+___rev. November 19, 2017___
 
 ## Background
 
@@ -47,21 +49,24 @@ Faster than Mergesort in most cases, because less data movement:
 
 3.  Sort each side, left and right, recursively
 
+
 ## How Do We Do This?
 
-Phase 1:  Repeat until i and j pointers cross:
+Phase 1:  Arbitrarily choose the first element as partitioning element, a[lo]
 
-    - arbitrarily choose first element as partitioning element, a[lo]
+Phase 2:  Traverse the array with two pointers, i and j:
     
-    - maintain an i pointer that moves from left to right, as long
-    as it points to an element a[i] < partitioning element a[lo]
+    - move an i pointer, a[i], from left to right, as long as a[i] < a[lo]
     
-    - maintain a j pointer that moves from right to left, as long as 
-    it points to an element a[j] > partitioning element a[lo]
+    - move a j pointer, a[j], from right to left, as long as a[j] > a[lo]
 
-    - exchange a[i] and a[j]
+    - when one of the above conditions fails, exchange a[i] and a[j]
 
-Phase 2:  When pointers cross:
+    - increment i and decrement j
+
+    - repeat Phase 2 until these pointers cross. 
+
+Phase 3:  When i and j pointers cross:
 
     - exchange a[lo] with a[j]
 
@@ -71,6 +76,6 @@ Phase 2:  When pointers cross:
 
     - everything to the right of a[j] > a[j]
 
-Phase 3:   Recursively sort the left and right subarrays in the same manner.
+Phase 4:   Recursively sort the left and right subarrays in the same manner.
 
 Complete:  The array is sorted in ascending order.  Congrats!!

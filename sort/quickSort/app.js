@@ -1,20 +1,26 @@
-// QUICKSORT
+// Quicksort
 
 // Joseph Stowers
 // March 26, 2007
 
 // String to be sorted
-let string = 'QUICKSORTEXAMPLE';
+let string = 'UIKCQ';
+// let string = 'QUICKSTAR';
+// let string = 'QUICKSORTEXAMPLE';
 // let string = 'ZYXWVUTSRQPONMLKJIHGFEDCBA'
 
 // Split string and shuffle array
 let array = string.split('');
-let arrayShuffle = shuffle(array);
-console.log('Array before quicksort =', arrayShuffle);
+console.log('Array before quicksort =', array);
+
+// If shuffling the array:
+// let arrayShuffle = shuffle(array);
+// console.log('Array before quicksort =', arrayShuffle);
 
 // Call to quicksort
-quickSort(arrayShuffle, 0, arrayShuffle.length-1);
-console.log('Array after quicksort =', arrayShuffle);
+// quickSort(arrayShuffle, 0, arrayShuffle.length-1);
+quickSort(array, 0, array.length-1);
+console.log('Array after quicksort =', array);
 
 // Partition function separates low values to left
 // and high values to right of partition index.
@@ -56,6 +62,8 @@ function partition (arr, lo, hi) {
 // Quicksort recursive algorithm
 function quickSort(array, lo, hi) {
 
+	console.log('quickSort array =', array);
+
 	if (hi <= lo) return;
 
 	let j = partition(array, lo, hi);
@@ -81,7 +89,7 @@ function shuffle(array) {
 		array[randomIndex] = tempVal;
 	}
 
-	return array
+	return array;
 }
 
 
