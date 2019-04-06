@@ -1,4 +1,5 @@
-
+// Binary Search Array
+// March 19, 2017
 
 function binarySearch (array, target) {
 
@@ -6,24 +7,20 @@ function binarySearch (array, target) {
 
 	console.log('array =', array, '  target =', target);
 
-	function recursive(array, target, iMin, iMax, tag) {
+	function recursive(array, target, iMin, iMax) {
 
 		// base case to stop recursion
 		// target value does not exist in array
 		if (iMax < iMin) {
 			return -1;
-		} else if (iMin === iMax && array[iMin] !== target){
+		}
+		else if (iMin === iMax && array[iMin] !== target){
 			return -1;
 		}
-
-		// calculate midpoint index
-		// if previous midpoint value < target
-		if (tag === 'less'){
-			iMid = iMin + (Math.floor((iMax - iMin)/2));
-		} else {
-			iMid = iMin;
-		}
 		
+		// calculate midpoint index
+		iMid = iMin + (Math.floor((iMax - iMin)/2));
+
 		// determine midpoint value
 		valMid = array[iMid];
 
@@ -31,29 +28,22 @@ function binarySearch (array, target) {
 
 		// tests for target value
 		if(valMid > target) {
-			console.log('valMid > target');
 			iMin = iMin;
 			iMax = iMid;
-			tag = 'greater';
 		} else if (valMid < target) {
-			console.log('valMid < target');
 			iMin = iMid+1;
 			iMax = iMax;
-			tag = 'less';
 		} else if (valMid === target) {
-			console.log('valMid = ', valMid);
 			return iMid;
 		}
 
-		console.log('iMin = ', iMin, '    iMax =', iMax);
-		return recursive(array, target, iMin, iMax, tag)
-
+		return recursive(array, target, iMin, iMax)
 	}
 
-	let result = recursive(array, target, 0, array.length-1, 'less');
+	// initial recursive call
+	let result = recursive(array, target, 0, array.length-1);
 
 	return result;
-
 }
 
 console.log('--------------------');
@@ -86,8 +76,11 @@ console.log('index = ', binarySearch([11, 12, 13, 14, 15], 12)); // WORKS!
 console.log('--------------------');
 console.log('index = ', binarySearch([11, 12, 13, 14, 15], 11)); // WORKS!
 
-
-
 console.log('--------------------');
 console.log('index = ', binarySearch([1, 2], 2));
 
+console.log('--------------------');
+console.log('index = ', binarySearch([1, 2], 1));
+
+console.log('--------------------');
+console.log('index = ', binarySearch([0, 1, 2], 0));

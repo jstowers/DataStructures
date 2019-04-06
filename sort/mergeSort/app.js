@@ -21,10 +21,10 @@ function mergeSort(array) {
 	
 
 	if(array.length < 2) {
-		return array
+		return array;
 	}
 
-	let mid = Math.floor(array.length/2)
+	let mid = Math.floor(array.length/2);
 	let loArr = array.slice(0, mid);
 	let hiArr = array.slice(mid);
 
@@ -32,12 +32,15 @@ function mergeSort(array) {
 
 }
 
+/* 
+	merge() takes two sorted arrays and merges them into one sorted array.
+
+	[ -30, 22 ]	   [ 0, 97 ]    =>    [ -30, 0, 22, 97 ]
+*/
+
 function merge(left, right) {
 
 	let result = [];
-
-	console.log('left list =', left);
-	console.log('right list =', right);
 	count += 1;
 
 	// shift() removes the first element of an
@@ -45,18 +48,27 @@ function merge(left, right) {
 	while (left.length && right.length) {
 		if (left[0] < right[0]) {
 			result.push(left.shift());
-		} else result.push(right.shift())
+		} else {
+			result.push(right.shift())
+		}
 	}
 
-	while (left.length) {
-		result.push(left.shift());
-	}
+	// creates a new empty array that adds all the elements
+	// of the result array, then the left array (if any), then
+	// the right array (if any)
+	return [...result, ...left, ...right];
 
-	while (right.length) {
-		result.push(right.shift());
-	}
-
-	return result;
+	// otherwise, you would need to loop through the two arrays
+	// separately:
+	/*
+		while (left.length) {
+			result.push(left.shift());
+		}
+		while (right.length) {
+			result.push(right.shift());
+		}
+		return result;
+	*/
 }
 
 console.log('mergeSort', mergeSort(string));

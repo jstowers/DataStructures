@@ -1,6 +1,8 @@
-#HASH TABLE
+# HASH TABLE
 
     No ordered operations, but gain speed in lookup and insertion.
+
+    The hash function takes a key and reduces it to an integer, an array index.
 
 ### Advantages ###
 

@@ -1,8 +1,5 @@
 # Quicksort
-
-___orig. March 27, 2017___
-
-___rev. November 19, 2017___
+A divide-and-conquer, recursive algorithm with avg running time of O(n*log(n)).
 
 ## Background
 
@@ -14,18 +11,18 @@ ___rev. November 19, 2017___
 
 - Recursion occurs _after_ the work is done, not before like Mergesort.
 
-
 ## Advantages
 
-Divide-and-conquer algorithm.
+- Divide-and-conquer algorithm.
 
-Shuffling is needed to guarantee performance.
+- Shuffling is needed to guarantee performance.
 
-Unlike Mergesort which requires an extra array (more storage), Quicksort
-partitions and sorts in place.
+- Stable - unlike Mergesort which requires an extra array (more storage), Quicksort partitions and sorts in place.
 
-39% more compares than Mergesort.
- 
+- 39% more compares than Mergesort.
+
+## Big O Time Complexity
+
 Faster than Mergesort in most cases, because less data movement:
 
     Best case:      Number of compares ~ N*(log N), like Mergesort
@@ -34,6 +31,10 @@ Faster than Mergesort in most cases, because less data movement:
 
     Worst case:     Number of compares ~ 0.5*(N^2), if random shuffle puts everything in order.
 
+## Disadvantages
+
+_Unstable_
+QuickSort does not preserve the relative order of data elements that are otherwise identical.
 
 ## Basic Plan
 
@@ -46,6 +47,8 @@ Faster than Mergesort in most cases, because less data movement:
         - no larger entry to the left of j
         
         - no smaller entry to the right of j
+
+    Every time a partition occurs, you perform constant-time operations (O(n)) on the elements involved.
 
 3.  Sort each side, left and right, recursively
 
@@ -79,3 +82,13 @@ Phase 3:  When i and j pointers cross:
 Phase 4:   Recursively sort the left and right subarrays in the same manner.
 
 Complete:  The array is sorted in ascending order.  Congrats!!
+
+## Revisions
+
+___orig. March 27, 2017___
+
+___rev. November 19, 2017___
+
+___rev. June 16, 2018___
+
+___rev. June 20, 2018___

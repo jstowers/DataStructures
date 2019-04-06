@@ -1,11 +1,18 @@
 // Insertion Sort
-// March 23, 2017
+// March 23, 2017 (orig)
+// November 19, 2017 (revised)
 
 /*
-	
-	Everything left of pointer (index i) is sorted in ascending order
+	Invariants
 
-	Everything right of pointer (index i) has not been seen
+	1.  Pointer scans from left to right
+
+	2.  Everything left of pointer (index i) is sorted in ascending order
+
+	3.  Everything right of pointer (index i) has not been seen
+
+
+	Algorithm
 
 	If value at index i is smaller than value to its immediate left, start new index j = i
 
@@ -18,6 +25,7 @@
 
 */
 
+
 function insertSort(array) {
 
 	let temp;
@@ -28,9 +36,12 @@ function insertSort(array) {
 		for (var j = i; j > 0; j--) {
 
 			if (array[j] < array[j-1]){
+				console.log('array[j] before = ', array[j])
 				temp = array[j];
 				array[j] = array[j-1];
 				array[j-1] = temp;
+				console.log('array[j] after = ', array[j]);
+				console.log('array = ', array);
 				count++
 			} else break;
 		}
@@ -40,6 +51,30 @@ function insertSort(array) {
 
 	return array;
 }
+
+/*
+function insertSort(array) {
+
+	let temp = 0;
+	let count = 0;
+
+	for (let i = 0; i < array.length; i++) {
+		if(array[i+1] < array[i]) {
+			for (let j = i+1; j > 0; j--) {
+				if(array[j-1] > array[j]) {
+					temp = array[j-1];
+					array[j-1] = array[j];
+					array[j] = temp;
+					count++;
+				} else break;
+			}
+		}
+	}
+
+	console.log('Total exchanges = ', count);
+	return array;
+}
+*/
 
 
 // AVERAGE CASE => randomly-sorted array with distinct keys
@@ -61,29 +96,7 @@ console.log('insertSort =', insertSort(array1));
 let array2 = ['X', 'T', 'S', 'R', 'P', 'O', 'M', 'L', 'E', 'E', 'A']; 
 console.log('insertSort =', insertSort(array2));
 
-/*
-function insertSort1() {
 
-	let temp;
+let array3 = [1, 2, 3, 4, 5, 6, 7, 8, 10, 9]; // 1
+console.log('insertSort =', insertSort(array3));
 
-	// let array = [ { "value": 3 }, { "value": 1 }, { "value": 2 } ];
-	let array = [{value: 10}, {value: 5, order: 1}, {value: 5, order: 2}]
-
-	for (let i = 0; i < array.length; i++) {
-
-		for (let j = i; j > 0; j--) {
-
-			if (array[j].value < array[j-1].value) {
-				temp = array[j];
-				array[j] = array[j-1];
-				array[j-1] = temp;
-			} else break;
-		}
-	}
-
-	return array;
-}
-
-console.log('insertSort1() =', insertSort1());
-
-*/

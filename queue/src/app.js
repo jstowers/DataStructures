@@ -29,6 +29,7 @@ let Node =  function(value) {
 	}
 }
 
+// Constructor
 let LinkedList = function(initialValue) {
 
 	if (initialValue) {
@@ -63,9 +64,6 @@ LinkedList.prototype.enqueue = function(value) {
 
 	// increment the size of the queue
 	this.N += 1;
-
-	// console.log('queue =', this)
-
 };
 
 LinkedList.prototype.dequeue = function() {
@@ -98,22 +96,21 @@ LinkedList.prototype.dequeue = function() {
 // Determines whether a node contains a certain value
 LinkedList.prototype.contains = function(value) {
   
-  function recurse(node){
-    
-    if(node === null){
-      return false;
-    }
-    else if (node.value === value){
-      return true
-    }
-    else {
-      // need to return up the call stack
-      return recurse(node.next)
-    }
-    
-  }
+	function recurse(node){  
+	    if(node === null){
+	      return false;
+	    }
+	    else if (node.value === value){
+	      return true
+	    }
+	    else {
+	      // need to return up the call stack
+	      return recurse(node.next)
+	    }
+
+	}
   
-  return recurse(this.head);
+    return recurse(this.head);
 }
 
 // Determines whether the LinkedList is empty
@@ -141,8 +138,8 @@ Queue.makeQueue = function() {
 	let fs = require('fs');
 
 	// Synchronous call to read string file
-	// let string = fs.readFileSync(process.argv[2], 'utf-8');
-	let string = 'alpha beta gamma - - delta - episilon - zeta eta - -';
+	let string = fs.readFileSync(process.argv[2], 'utf-8');
+	// let string = 'alpha beta gamma - - delta - epsilon - zeta eta - -';
 
 	// Split string into array
 	let strToArr = string.split(" ");
@@ -163,12 +160,10 @@ Queue.makeQueue = function() {
 			queue.enqueue(strToArr[0]);
 		}
 
-		// string.slice()
-		strToArr = strToArr.slice(1)
-
+		strToArr = strToArr.slice(1);
 	}
 
-	console.log('queue = ', queue)
+	console.log('queue =', queue);
 	return queue;
 }();
 

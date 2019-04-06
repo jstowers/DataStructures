@@ -111,11 +111,3 @@ while( strToArr.length > 0 ) {
 	strToArr = strToArr.slice(1)
 
 }
-
-
-
-
-
-
-
-

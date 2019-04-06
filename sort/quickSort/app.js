@@ -1,13 +1,11 @@
 // Quicksort
-
 // Joseph Stowers
 // March 26, 2007
 
 // String to be sorted
-let string = 'UIKCQ';
-// let string = 'QUICKSTAR';
 // let string = 'QUICKSORTEXAMPLE';
 // let string = 'ZYXWVUTSRQPONMLKJIHGFEDCBA'
+let string = 'IDEPAPGQVJ';
 
 // Split string and shuffle array
 let array = string.split('');
@@ -16,9 +14,9 @@ console.log('Array before quicksort =', array);
 // If shuffling the array:
 // let arrayShuffle = shuffle(array);
 // console.log('Array before quicksort =', arrayShuffle);
+// quickSort(arrayShuffle, 0, arrayShuffle.length-1);
 
 // Call to quicksort
-// quickSort(arrayShuffle, 0, arrayShuffle.length-1);
 quickSort(array, 0, array.length-1);
 console.log('Array after quicksort =', array);
 
@@ -32,13 +30,13 @@ function partition (arr, lo, hi) {
 	while(i <= j) {
 
 		while (arr[i] <= arr[lo]) {
-			// console.log('i =', i, '  arr[i] =', arr[i]);
+			console.log('i =', i, '  arr[i] =', arr[i]);
 			i++;
 			if (i === hi) break;
 		}
 
 		while (arr[j] > arr[lo]) {
-			// console.log('j =', j, '  arr[j] =', arr[j]);
+			console.log('j =', j, '  arr[j] =', arr[j]);
 			j--;
 			if (j === lo) break;
 		}
@@ -48,21 +46,21 @@ function partition (arr, lo, hi) {
 			arr[j] = arr[i];
 			arr[i] = temp;
 		}
-		// console.log('arr after =', arr, '  i =', i, '  j =', j);
+		console.log('arr after =', arr, '  i =', i, '  j =', j);
 	}
 
 	temp = arr[lo];
 	arr[lo] = arr[j];
 	arr[j] = temp;
 
-	console.log('arr =', arr);
+	console.log('j =', j);
 	return j;
 }
 
 // Quicksort recursive algorithm
 function quickSort(array, lo, hi) {
 
-	console.log('quickSort array =', array);
+	//console.log('quickSort array =', array);
 
 	if (hi <= lo) return;
 

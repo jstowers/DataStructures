@@ -103,7 +103,7 @@ HashTable.prototype.get = function(key) {
 
 
 // Retrieve All Method
-// Return an array of all hash nodes in our table
+// Returns an array of all hash nodes in our table
 HashTable.prototype.retrieveAll = function() {
 
 	let allNodes = [];

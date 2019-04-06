@@ -43,14 +43,14 @@
 */
 
 
-// constructor function
+// Constructor function
 function BST(value) {
 	this.value = value;
 	this.left = null;
 	this.right = null;
 }
 
-// insert method
+// Insert method
 // 1. take in a value
 // 2. make a new BST with that value (node)
 // 3. place node into original BST in correct location
@@ -78,7 +78,7 @@ BST.prototype.insert = function(value) {
 	}
 };
 
-// contains method
+// Contains method
 // cost:  number of compares = 1 + depth of node
 BST.prototype.contains = function(value) {
 
@@ -131,7 +131,7 @@ BST.prototype.contains = function(value) {
 
 	4.	Ceiling
 
-			- How doe we find the smallest key >= a given key?
+			- How do we find the smallest key >= a given key?
 
 */
 
@@ -187,7 +187,6 @@ bst.insert(105);
 bst.insert(10);
 
 
-/*
 console.log('bst =', bst);
 
 console.log(bst.right.left.left);
@@ -199,7 +198,6 @@ console.log(bst.right.right);
 console.log('85: ', bst.contains(85));
 
 console.log('69: ', bst.contains(69));
-*/
 
 
 // Basic callback function
@@ -236,25 +234,3 @@ function maxVal(root) {
 
 console.log('minVal = ', minVal(bst))
 console.log('maxVal = ', maxVal(bst))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

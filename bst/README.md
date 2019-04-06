@@ -45,5 +45,5 @@ Operations
 
     2.  If search for key reaches a null link, then key doesn't exist in BST
 
-    3.  Insert - if get to null link and not found, just put the key theregs
+    3.  Insert - if get to null link and not found, just put the key there
 
