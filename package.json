@@ -1,0 +1,22 @@
+{
+  "name": "datastructures",
+  "version": "1.0.0",
+  "description": "Fundamental Data Structures & Algorithms",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jstowers/DataStructures.git"
+  },
+  "author": "Joseph E. Stowers",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jstowers/DataStructures/issues"
+  },
+  "homepage": "https://github.com/jstowers/DataStructures#readme",
+  "dependencies": {
+    "jest": "^24.7.1"
+  }
+}
