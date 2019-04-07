@@ -154,20 +154,24 @@ describe('InsertLast', () => {
 });
 
 describe('GetAt', () => {
-  test('returns the node at given index', () => {
-    const l = new List();
-    expect(l.getAt(10)).toEqual(null);
+    test('returns null for an empty list', () => {
+        const l = new List();
+        expect(l.getAt(2)).toEqual(null);
+    })
 
-    l.insertLast(1);
-    l.insertLast(2);
-    l.insertLast(3);
-    l.insertLast(4);
+    test('returns the node at given index', () => {
+        const l = new List();
 
-    expect(l.getAt(0).data).toEqual(1);
-    expect(l.getAt(1).data).toEqual(2);
-    expect(l.getAt(2).data).toEqual(3);
-    expect(l.getAt(3).data).toEqual(4);
-  });
+        l.insertLast(1);
+        l.insertLast(2);
+        l.insertLast(3);
+        l.insertLast(4);
+
+        expect(l.getAt(0).data).toEqual(1);
+        expect(l.getAt(1).data).toEqual(2);
+        expect(l.getAt(2).data).toEqual(3);
+        expect(l.getAt(3).data).toEqual(4);
+    });
 });
 
 describe.skip('RemoveAt', () => {
@@ -278,7 +282,7 @@ describe.skip('InsertAt', () => {
   });
 });
 
-describe.skip('ForEach', () => {
+describe('ForEach', () => {
   test('applies a transform to each node', () => {
     const l = new List();
 

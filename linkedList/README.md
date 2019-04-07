@@ -78,3 +78,5 @@
 8. __insertLast(data)__ - inserts a new node at the end of the list
 
 9. __getAt(index)__ - return node at a given index
+
+10. __forEach(func)__ - calls the provided function with every node in the list

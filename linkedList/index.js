@@ -178,6 +178,20 @@ class LinkedList {
         }
         return recursive(this.head);
     }
+
+    // calls the provided function with every node in the chain
+    forEach(func) {
+
+        function recursive(node) {
+            if (!node) {
+                return;
+            }
+            func(node);
+            recursive(node.next);
+        }
+
+        return recursive(this.head);
+    }
 }
 
 module.exports = { Node, LinkedList };
