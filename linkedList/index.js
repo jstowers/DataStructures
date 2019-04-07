@@ -59,14 +59,31 @@ class LinkedList {
     getLast() {
         let node = this.head;
 
+        if (!node) {
+            return null;
+        }
+
         function recursive(node) {
-            if(node.next === null) {
+            if(!node.next) {
                 return node;
             }
             return recursive(node.next);
         }
 
         return recursive(node);
+    }
+
+    clear() {
+        this.head = null;
+    }
+
+    // head reference will point to the second node, not the first one
+    removeFirst() {
+        let node = this.head;
+        if(!node) {
+            return;
+        }
+        this.head = node.next;
     }
 }
 

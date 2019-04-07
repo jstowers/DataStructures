@@ -61,16 +61,14 @@
 
 ### Linked List Methods
 
-1. insertFirst(data)
+1. __insertFirst(data)__ - inserts a new node into the list
 
-    + create a new Node with the data
+2. __size()__ - returns a count of all nodes
 
-    + if Linked List head !== null, then assign head to new Node's next reference
+3. __getFirst()__ - returns the first node
 
-    + then point head to new Node
+4. __getLast()__ - returns the last node
 
-2. size()
+5. __clear()__ - deletes all nodes
 
-3. getFirst()
-
-4. getLast()
+6. __removeFirst()__ - removes the first node
