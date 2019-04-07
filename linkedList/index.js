@@ -105,10 +105,78 @@ class LinkedList {
                 previous.next = null;
                 return;
             }
-
             recursive(current, current.next);
         }
+
         recursive(node, node.next);
+    }
+
+    // alternative solution
+    /*
+        removeLast() {
+            if(!this.head) {
+                return;
+            }
+
+            if(!this.head.next) {
+                this.head = null;
+                return;
+            }
+
+            let previous = this.head;
+            let node = this.head.next;
+
+            while(node.next) {
+                previous = node;
+                node = node.next;
+            }
+            previous.next = null;
+        }
+    */
+
+    insertLast(data) {
+        let last = this.getLast();
+
+        if(last) {
+            last.next = new Node(data);
+        } else {
+            this.head = new Node(data);
+        }
+    }
+
+    // alternative solution
+    /*
+        insertLast(data) {
+            let lastNode = new Node(data);
+
+            let node = this.head;
+
+            function recursive(node) {
+                if(node.next === null) {
+                    node.next = lastNode;
+                    return;
+                }
+                recursive(node.next);
+            }
+
+            recursive(node);
+        }
+    */
+
+    getAt(index) {
+        let counter = 0;
+
+        function recursive(node) {
+            if (!node) {
+                return null;
+            } else if(counter === index) {
+                return node;
+            } else {
+                counter += 1;
+                return recursive(node.next);
+            }
+        }
+        return recursive(this.head);
     }
 }
 

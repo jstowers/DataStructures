@@ -135,19 +135,25 @@ describe('RemoveLast', () => {
   });
 });
 
-describe.skip('InsertLast', () => {
-  test('adds to the end of the list', () => {
-    const l = new List();
-    l.insertFirst('a');
+describe('InsertLast', () => {
+  
+    test('adds to the end of an empty linked list', () => {
+        const l = new List();
+        l.insertLast('a');
+        expect(l.size()).toEqual(1);
+        expect(l.getLast().data).toEqual('a');
+    });
 
-    l.insertLast('b');
-
-    expect(l.size()).toEqual(2);
-    expect(l.getLast().data).toEqual('b');
-  });
+    test('adds to the end of the list', () => {
+        const l = new List();
+        l.insertFirst('a');
+        l.insertLast('b');
+        expect(l.size()).toEqual(2);
+        expect(l.getLast().data).toEqual('b');
+    });
 });
 
-describe.skip('GetAt', () => {
+describe('GetAt', () => {
   test('returns the node at given index', () => {
     const l = new List();
     expect(l.getAt(10)).toEqual(null);

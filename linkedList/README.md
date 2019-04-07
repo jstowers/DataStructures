@@ -72,3 +72,9 @@
 5. __clear()__ - deletes all nodes
 
 6. __removeFirst()__ - removes the first node
+
+7. __removeLast()__ - removes the last node
+
+8. __insertLast(data)__ - inserts a new node at the end of the list
+
+9. __getAt(index)__ - return node at a given index
