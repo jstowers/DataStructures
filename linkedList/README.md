@@ -151,7 +151,6 @@ class Tree {
     }
 
     *printValue() {
-        console.log('this.value =', this.value);
         yield this.value;
         for(let child of this.children) {
             // delegate to another children
@@ -171,7 +170,6 @@ const values = [];
 for (let value of tree.printValue()) {
     values.push(value);
 }
-console.log('values =', values);
 ```
 
 ### Linked Lists with Generators
