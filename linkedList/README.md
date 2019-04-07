@@ -177,3 +177,38 @@ for (let value of tree.printValue()) {
 + Using a for...of loop, we can iterate through each node of a linked list.
 
 + Set up a generator function
+
+```javascript
+    
+    // generator function on Linked List class
+    // note the asterisk and the key [Symbol.iterator]
+    *[Symbol.iterator]() {
+        let node = this.head;
+        while(node) {
+            yield node;
+            node = node.next;
+        }
+    }
+
+    // create new linked list with values, then iterate through each node
+    const l = new List();
+
+    l.insertLast(1);
+    l.insertLast(2);
+    l.insertLast(3);
+    l.insertLast(4);
+
+    // add 10 to each node value
+    for (let node of l) {
+        node.data += 10;
+    }
+
+    // unit test using for...of loop
+    test('for...of works on an empty list', () => {
+        const l = new List();
+        expect(() => {
+            for (let node of l) {
+            }
+        }).not.toThrow();
+    });
+```
