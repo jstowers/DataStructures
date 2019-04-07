@@ -21,7 +21,6 @@ describe('A Node', () => {
 describe('Insert First', () => {
   test('appends a node to the start of the list', () => {
     const l = new List();
-    console.log('l =', l);
     l.insertFirst(1);
     expect(l.head.data).toEqual(1);
     l.insertFirst(2);
@@ -98,7 +97,7 @@ describe('RemoveFirst', () => {
   });
 });
 
-describe.skip('RemoveLast', () => {
+describe('RemoveLast', () => {
   test('RemoveLast removes the last node when list is empty', () => {
     const l = new List();
     expect(() => {

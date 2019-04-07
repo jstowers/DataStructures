@@ -85,6 +85,31 @@ class LinkedList {
         }
         this.head = node.next;
     }
+
+    // removeLast() has two edge cases:
+    // 1. empty linked list
+    // 2. a linked list of size 1
+
+    removeLast() {
+        let node = this.head;
+
+        // empty list or list with only 1 node
+        if(!node || !node.next) {
+            this.head = null;
+            return;
+        }
+
+        function recursive(previous, current) {
+            
+            if (!current.next) {
+                previous.next = null;
+                return;
+            }
+
+            recursive(current, current.next);
+        }
+        recursive(node, node.next);
+    }
 }
 
 module.exports = { Node, LinkedList };
