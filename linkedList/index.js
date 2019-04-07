@@ -233,7 +233,32 @@ class LinkedList {
         }
     */
 
-    
+    insertAt(data, index) {
+
+        // empty list
+        if (!this.head) {
+            this.head = new Node(data);
+            return;
+        }
+
+        let previous = this.getAt(index - 1);
+        let indexedNode = this.getAt(index);
+
+        // insert node at beginning of list
+        if(index === 0) {
+            this.head = new Node(data, indexedNode);
+            return;
+        }
+ 
+        // insert node in middle of list
+        if(previous && indexedNode) {
+            previous.next = new Node(data, indexedNode);
+            return;
+        }
+        
+        // insert node at end of list
+        this.getLast().next = new Node(data);
+    }
 
     // calls the provided function with every node in the chain
     forEach(func) {
