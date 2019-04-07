@@ -174,8 +174,8 @@ describe('GetAt', () => {
     });
 });
 
-describe.skip('RemoveAt', () => {
-  test('removeAt doesnt crash on an empty list', () => {
+describe('RemoveAt', () => {
+  test('removeAt doesn\'t crash on an empty list', () => {
     const l = new List();
     expect(() => {
       l.removeAt(0);
@@ -184,7 +184,7 @@ describe.skip('RemoveAt', () => {
     }).not.toThrow();
   });
 
-  test('removeAt doesnt crash on an index out of bounds', () => {
+  test('removeAt doesn\'t crash on an index out of bounds', () => {
     const l = new List();
     expect(() => {
       const l = new List();
@@ -302,7 +302,7 @@ describe('ForEach', () => {
   });
 });
 
-describe.skip('for...of loops', () => {
+describe('for...of loops', () => {
   test('works with the linked list', () => {
     const l = new List();
 

@@ -179,6 +179,62 @@ class LinkedList {
         return recursive(this.head);
     }
 
+    removeAt(index) {
+
+        // empty list
+        if (!this.head) {
+            return;
+        }
+
+        // remove head node
+        if (index === 0) {
+            this.head = this.head.next;
+            return;
+        }
+
+        let previous = this.getAt(index - 1);
+        let indexedNode = this.getAt(index);
+ 
+        if(previous && indexedNode && indexedNode.next) {
+            previous.next = indexedNode.next;
+        }
+        else previous.next = null;
+    }
+
+    // alternative solution using recursion
+    /*
+        removeAt(index) {
+            let node = this.head;
+            let counter = 0;
+
+            // empty list
+            if(!node) {
+                return;
+            }
+
+            // remove 1st node
+            if(index === 0) {
+                this.head = node.next;
+            }
+
+            function recursive(previous, current) {
+                if(!current) {
+                    return;
+                }
+                else {
+                    counter += 1;
+                    if (index === counter) {
+                        previous.next = current.next;
+                    }
+                }
+                return recursive(current, current.next);
+            }
+            recursive(node, node.next);
+        }
+    */
+
+    
+
     // calls the provided function with every node in the chain
     forEach(func) {
 
@@ -191,6 +247,15 @@ class LinkedList {
         }
 
         return recursive(this.head);
+    }
+
+    // generator function with key Symbol.iterator
+    *[Symbol.iterator]() {
+        let node = this.head;
+        while(node) {
+            yield node;
+            node = node.next;
+        }
     }
 }
 

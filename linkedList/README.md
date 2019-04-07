@@ -1,6 +1,6 @@
 # Linked List
 
-## Definition
+## Introduction
 + Ordered collection of data built from _nodes_.
 
 + A __Node__ contains two key pieces of information:
@@ -34,6 +34,8 @@
     // nodeTwo = { data: 456 }
 ```
 
+## Classes and Methods
+
 ### Node Class
 
 ```javascript
@@ -44,7 +46,6 @@
         }
     }
 ```
-
 
 ### Linked List Class
 
@@ -57,7 +58,6 @@
         // methods shown below
     }
 ```
-
 
 ### Linked List Methods
 
@@ -77,25 +77,34 @@
 
 8. __insertLast(data)__ - inserts a new node at the end of the list
 
-9. __getAt(index)__ - return node at a given index
+9. __getAt(index)__ - returns node at a given index
 
-10. __forEach(func)__ - calls the provided function with every node in the list
+10. __removeAt(index)__ - removes node at a given index
+
+11. __insertAt(index)__ - inserts a new node at a given index
+
+12. __forEach(func)__ - calls the provided function on every node in the list
+
+13. __for...of__ - uses a generator to loop through each node in the list
 
 ---
 
-### Using Generators to Iterate Through Linked Lists
+## An Introduction to Generators
 
-+ Generators are used to control the execution timing of iterators
+### Background
++ Generators control the execution timing of iterators.
 
-+ the __'*'__ in the function definition indicates a generator
++ The __'*'__ in the function definition indicates a generator.
 
-+ _'yield'_ returns a value only once; the next time the generator is called, execution will resume from that yield point
++ The return value is a generator __object__.
 
-+ the return value is a generator __object__
++ __'yield'__ returns a value only once; the next time the generator is called, execution will resume from that yield point.
+
+### A Simple Example
 
 ```javascript
 function *numbers() {
-    const result = 1 + 1;
+    const result = 1 + 2;
     return 20 + (yield result);
 }
 
@@ -110,9 +119,63 @@ generator.next();
 
 generator.next(15);
 /*
-    when .next is called again, the value in the argument will be passed into the yield statement, 
-    and the generator will return the function value
+    when .next is called again, the value in the argument (15) will be passed into the yield statement, 
+    and the generator will complete execution and return the final value
     => { value: 35, done: true }
 */
 
 ```
+
+### Using Generators to Create a Tree Class
+
++ Create a function to iterate depth-first through a Tree and collect the values of each node
+
+``` 
+        1
+    ---------
+    |   |   |
+    2   3   4
+    |     ----- 
+    5     6   7
+          |
+          8
+```
+
++ Expected result => [1, 2, 5, 3, 4, 6, 8, 7]
+
+```javascript
+class Tree {
+    constructor(value = null, children = []) {
+        this.value = value;
+        this.children = children;
+    }
+
+    *printValue() {
+        console.log('this.value =', this.value);
+        yield this.value;
+        for(let child of this.children) {
+            // delegate to another children
+            // walk through that node's children and print values
+            yield* child.printValue();
+        }
+    }
+}
+
+const tree = new Tree(1, [
+    new Tree(2, [new Tree(5)]),
+    new Tree(3),
+    new Tree(4, [new Tree(6, [new Tree(8)]), new Tree(7)])
+]);
+
+const values = [];
+for (let value of tree.printValue()) {
+    values.push(value);
+}
+console.log('values =', values);
+```
+
+### Linked Lists with Generators
+
++ Using a for...of loop, we can iterate through each node of a linked list.
+
++ Set up a generator function
