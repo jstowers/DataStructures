@@ -80,3 +80,39 @@
 9. __getAt(index)__ - return node at a given index
 
 10. __forEach(func)__ - calls the provided function with every node in the list
+
+---
+
+### Using Generators to Iterate Through Linked Lists
+
++ Generators are used to control the execution timing of iterators
+
++ the __'*'__ in the function definition indicates a generator
+
++ _'yield'_ returns a value only once; the next time the generator is called, execution will resume from that yield point
+
++ the return value is a generator __object__
+
+```javascript
+function *numbers() {
+    const result = 1 + 1;
+    return 20 + (yield result);
+}
+
+const generator = numbers();  // returns a generator object => Object [Generator] {}
+
+generator.next(); 
+/* 
+    when .next is called the first time, the code will execute inside the generator up to the yield 
+    statement; there, execution is paused and the result from the yield statement will be returned
+    => { value: 3, done: false }
+*/
+
+generator.next(15);
+/*
+    when .next is called again, the value in the argument will be passed into the yield statement, 
+    and the generator will return the function value
+    => { value: 35, done: true }
+*/
+
+```
