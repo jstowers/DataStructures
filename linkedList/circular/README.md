@@ -8,18 +8,23 @@
 
 ### Algorithm
 
-1.  To identify a circular linked list, we will use two separate pointers, slow and fast, to iterate through the linked list at different speeds.
+1.  To identify a circular linked list, use two separate pointers, __Slow and Fast__, to iterate through the linked list at different speeds.
     
-    + Slow looks at first node
-    + Fast looks at next node
+    + Both slow and fast start at the first node (head)
+    + Fast advances two nodes
+    + Slow advances one node 
+   
+2.  If Fast passes two defined nodes, then enter while loop:
+    + Fast advances two nodes
+    + Slow advances one node
 
-2.  If next two nodes after Fast are defined, then enter into for loop:
-    + Inside for loop:
-        + most Fast forward by two nodes
-        + move Slow forward by one node
+3. Are Slow and Fast pointing at the same node (===)?
 
-3. are Slow and Fast looking at the same node (===)?
-
-    + if no, continue iterating, until fast finds a null value => return false
+    + if no, continue iterating, until Fast finds a null value => return false, OR
 
     + if yes . . . then we have a circular linked list => return true
+
+### Google Coding Interview Problem
+
+If given a circular linked list, design an algorithm to remove every other node.
+
