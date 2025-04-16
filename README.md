@@ -4,12 +4,11 @@ Data Structures &amp; Algorithms
 ## Stack with Linked List Implementation
 ### Monday, January 9, 2017
 
-This program creates a stack data structure by implementing a linked list.
+This program implements a linked list to create a stack data structure.
 
-A stack is a data structure based on the LIFO algorithm => Last In, First Out.
+A stack is a linear data structure based on the Last In, First Out ("LIFO") principle.  
 
-This means that the last item added (pushed) to the stack is the first item
-removed (popped).
+LIFO means the last item added ("push") to the stack becomes the first item removed ("pop").
 
 
 ## Queue with Linked List Implementation
